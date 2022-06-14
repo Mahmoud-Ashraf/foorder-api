@@ -50,7 +50,7 @@ app.use((error, req, res, next) => {
 
 mongoose.connect('mongodb+srv://admin:root@cluster0.opqot.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
   .then(result => {
-    app.listen(8080);
+    app.listen(process.env.PORT || 8080);
     console.log('database connected');
   })
   .catch(err => {
