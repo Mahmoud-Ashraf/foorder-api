@@ -189,6 +189,7 @@ exports.updateUser = (req, res, next) => {
     // const voted = req.body.voted;
     const lastVoteDate = req.body.lastVoteDate;
     const wallet = req.body.wallet;
+    const isAdmin = req.body.isAdmin;
     User.findById(userId)
         .then(user => {
             if (!user) {
@@ -201,6 +202,7 @@ exports.updateUser = (req, res, next) => {
             // user.voted = voted;
             user.lastVoteDate = lastVoteDate;
             user.wallet = wallet;
+            user.isAdmin = isAdmin;
             return user.save();
         })
         .then(result => {
