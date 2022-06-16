@@ -70,14 +70,14 @@ exports.updateConfigs = (req, res, next) => {
         // });
         // console.log('hello', res);
     }
-    Configurations.find()
+    Configurations.findById(req.body._id)
         .then(config => {
-            if (!config[0]) {
+            if (!config) {
                 const error = new Error('Could not find a resturant');
                 error.statusCode = 404;
                 throw error;
             }
-            config[0] = req.body;
+            config = req.body;
             // console.log(req.body);
             // // resturant = req.body;
             // resturant.name = req.body.name;
@@ -87,7 +87,7 @@ exports.updateConfigs = (req, res, next) => {
             // resturant.elmenusUrl = req.body.elmenusUrl;
             // resturant.lastVotedAt = req.body.lastVotedAt;
             // resturant.vote = req.body.vote;
-            return config[0].save();
+            return config.save();
         })
         .then(result => {
             return res.status(200).json({ message: 'Configurations update success', config: result });
