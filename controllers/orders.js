@@ -260,6 +260,7 @@ exports.updateTodayOrder = (req, res, next) => {
   const deliveryFees = req.body.deliveryFees;
   const discount = req.body.discount;
   const grandTotal = req.body.grandTotal;
+  const status = req.body.status;
   Order.findById(orderId)
     .then(order => {
       if (!order) {
@@ -271,6 +272,7 @@ exports.updateTodayOrder = (req, res, next) => {
       order.deliveryFees = deliveryFees;
       order.discount = discount;
       order.grandTotal = grandTotal;
+      order.status = status;
       return order.save();
     })
     .then(result => {

@@ -33,6 +33,10 @@ const orderSchema = new Schema({
         type: Number,
         default: 0
     },
+    status: {
+        type: String,
+        default: 'PENDING'
+    },
     createdOn: {
         type: String,
         required: true
