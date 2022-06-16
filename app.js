@@ -6,8 +6,8 @@ const resturantsRoutes = require("./routes/resturants");
 const authRoutes = require("./routes/auth");
 const menuRoutes = require('./routes/menus');
 const ordersRoutes = require('./routes/orders');
-const configRoutes = require('./routes/configurations');
 const collectedOrdersRoutes = require('./routes/collectedOrders');
+const configRoutes = require('./routes/configurations');
 const cors = require('cors')
 
 // const mongoConnect = require('./utils/database').mongoConnect;

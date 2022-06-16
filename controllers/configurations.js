@@ -1,4 +1,4 @@
-const Configurations = require('../models/configurations');
+const Configurations = require('../models/configuration');
 const { validationResult } = require("express-validator");
 
 exports.getConfigs = (req, res, next) => {
