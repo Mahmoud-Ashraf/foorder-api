@@ -72,7 +72,8 @@ exports.updateConfigs = (req, res, next) => {
                 error.statusCode = 404;
                 throw error;
             }
-            config = req.body;
+            config.voteEndTime = req.body.voteEndTime;
+            config.orderEndTime = req.body.orderEndTime;
             return config.save();
         })
         .then(result => {
