@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const configSchema = new Schema({
     voteEndTime: {
         type: Array,
-        default: [23,59,59]
+        default: '23:59:59'
     },
     orderEndTime: {
         type: Array,
-        default: [23,59,59]
+        default: '23:59:59'
     }
 }
 );
