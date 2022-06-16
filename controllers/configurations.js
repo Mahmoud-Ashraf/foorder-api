@@ -64,11 +64,6 @@ exports.updateConfigs = (req, res, next) => {
         const error = new Error('Validation Faild, Enter data in correct format');
         error.statusCode = 422;
         throw error;
-        // res.status(422).json({
-        //   message: "Validation Faild, Enter data in correct format",
-        //   errors: errors.array(),
-        // });
-        // console.log('hello', res);
     }
     Configurations.findById(req.body._id)
         .then(config => {
@@ -78,15 +73,6 @@ exports.updateConfigs = (req, res, next) => {
                 throw error;
             }
             config = req.body;
-            // console.log(req.body);
-            // // resturant = req.body;
-            // resturant.name = req.body.name;
-            // resturant.type = req.body.type;
-            // resturant.phone = req.body.phone;
-            // resturant.savedPhone = req.body.savedPhone;
-            // resturant.elmenusUrl = req.body.elmenusUrl;
-            // resturant.lastVotedAt = req.body.lastVotedAt;
-            // resturant.vote = req.body.vote;
             return config.save();
         })
         .then(result => {
