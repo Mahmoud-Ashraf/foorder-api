@@ -6,6 +6,7 @@ const resturantsRoutes = require("./routes/resturants");
 const authRoutes = require("./routes/auth");
 const menuRoutes = require('./routes/menus');
 const ordersRoutes = require('./routes/orders');
+const configRoutes = require('./routes/configurations');
 const collectedOrdersRoutes = require('./routes/collectedOrders');
 const cors = require('cors')
 
@@ -33,6 +34,7 @@ app.use('/auth', authRoutes);
 app.use(menuRoutes);
 app.use(ordersRoutes);
 app.use(collectedOrdersRoutes);
+app.use(configRoutes);
 
 // mongoConnect(() => {
 //   app.listen(8080);
