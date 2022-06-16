@@ -72,12 +72,12 @@ exports.updateConfigs = (req, res, next) => {
     }
     Configurations.find()
         .then(config => {
-            if (!config) {
+            if (!config[0]) {
                 const error = new Error('Could not find a resturant');
                 error.statusCode = 404;
                 throw error;
             }
-            resturant[0] = req.body;
+            config[0] = req.body;
             // console.log(req.body);
             // // resturant = req.body;
             // resturant.name = req.body.name;
@@ -87,7 +87,7 @@ exports.updateConfigs = (req, res, next) => {
             // resturant.elmenusUrl = req.body.elmenusUrl;
             // resturant.lastVotedAt = req.body.lastVotedAt;
             // resturant.vote = req.body.vote;
-            return config.save();
+            return config[0].save();
         })
         .then(result => {
             return res.status(200).json({ message: 'Configurations update success', config: result });
