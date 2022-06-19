@@ -13,9 +13,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    // avatar: {
-    //     type: String
-    // },
     password: {
         type: String,
         required: true
@@ -41,7 +38,8 @@ const userSchema = new Schema({
         type: String
     },
     wallet: {
-        type: Number
+        type: Number,
+        default: 0
     }
 }
 );
