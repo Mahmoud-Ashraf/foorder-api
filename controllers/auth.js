@@ -159,6 +159,7 @@ exports.getUser = (req, res, next) => {
     // console.log(req.params.userId);
     const userId = req.params.userId;
     User.findById(userId)
+        .populate('orders')
         .then(user => {
             // console.log('mahmoud', user);
             if (!user) {
