@@ -31,7 +31,7 @@ const orderSchema = new Schema({
     },
     grandTotal: {
         type: Number,
-        default: 0
+        default: this.totalOrderPrice
     },
     status: {
         type: String,
