@@ -65,7 +65,7 @@ exports.login = (req, res, next) => {
     const password = req.body.password;
     let loadedUser;
     User.findOne({ email: email })
-        .populate('orders')
+        .populate(['orders', 'items.item'])
         .then(user => {
             if (!user) {
                 const error = new Error('A user with this email could not be found');
@@ -159,7 +159,7 @@ exports.getUser = (req, res, next) => {
     // console.log(req.params.userId);
     const userId = req.params.userId;
     User.findById(userId)
-        .populate('orders')
+        .populate(['orders', 'items.item'])
         .then(user => {
             // console.log('mahmoud', user);
             if (!user) {
