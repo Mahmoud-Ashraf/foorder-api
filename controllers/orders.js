@@ -68,6 +68,7 @@ exports.addOrder = (req, res, next) => {
     resturantId: req.body.resturantId,
     items: req.body.items,
     totalOrderPrice: req.body.totalOrderPrice,
+    grandTotal: req.body.grandTotal,
     createdOn: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
   });
   // console.log(order);
