@@ -111,6 +111,43 @@ exports.addOrder = (req, res, next) => {
       next(err);
     })
 };
+exports.updateOrder = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation Faild, Enter data in correct format');
+    error.statusCode = 422;
+    throw error;
+  }
+  // if (req.body.items.length <= 0) {
+  //   const error = new Error('You haven\'t any Items to add');
+  //   error.statusCode = 404;
+  //   throw error;
+  // }
+  // let addedOrder;
+  // const order = new Order({
+  //   status: req.body.status,
+  // });
+  // console.log(order);
+  Order.findById(req.params.orderId)
+    .then(order => {
+      if (!order) {
+        const error = new Error('Could not find an Order');
+        error.statusCode = 404;
+        throw error;
+      }
+      order.status = req.body.status;
+      return order.save();
+    })
+    .then(result => {
+      return res.status(200).json({ message: 'order status updated successfully', order: result });
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    })
+};
 
 // exports.updateOrder = (req, res, next) => {
 //   const orderId = req.params.orderId;
